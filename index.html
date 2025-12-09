@@ -233,7 +233,7 @@
         /* Experience Item */
         .job-item {
             margin-bottom: 25px;
-            page-break-inside: avoid;
+            /* page-break-inside: avoid; REMOVED to allow split across pages */
             position: relative;
             padding-left: 15px;
             border-left: 2px solid var(--border-light);
@@ -399,8 +399,23 @@
 
             @page {
                 size: A4;
-                margin: 0;
-                /* Control margins via CSS padding */
+                margin: 10mm;
+            }
+
+            /* FORCE allow breaking */
+            main,
+            section,
+            .job-item {
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+            }
+
+            /* Prevent header separation */
+            h2,
+            h3,
+            .job-header {
+                page-break-after: avoid;
+                break-after: avoid;
             }
         }
 

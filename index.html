@@ -1,875 +1,687 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senior DevOps Engineer - Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Pawel Bedynski - AI Engineer & Senior DevOps</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;700&display=swap');
+
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #64748b;
-            --accent: #0ea5e9;
-            --background: #ffffff;
-            --surface: #f8fafc;
-            --text-primary: #1e293b;
-            --text-secondary: #475569;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --radius: 8px;
-        }
+            /* Premium Corporate Palette */
+            --bg-body: #f1f5f9;
+            --bg-sidebar: #0f172a;
+            /* Dark Navy for contrast */
+            --bg-main: #ffffff;
 
-        .contact-item a:hover {
-            text-decoration: underline !important;
-        }
+            --text-sidebar-primary: #f8fafc;
+            --text-sidebar-secondary: #94a3b8;
 
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
+            --text-main-primary: #1e293b;
+            --text-main-secondary: #475569;
 
-        /* Print Styles */
-        @media print {
-            @page {
-                margin: 15mm;
-            }
-            
-            /* body {
-                margin: 0;
-                padding: 0;
-                background: white !important;
-                color: black !important;
-                font-size: 12pt;
-                line-height: 1.4;
-            }
-            
-            .container {
-                max-width: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            
-            .header {
-                background: #2563eb !important;
-                color: white !important;
-                padding: 20px 0 !important;
-            }
-            
-            .section {
-                padding: 15px 0 !important;
-                page-break-inside: avoid;
-            }
-            
-            .experience-item {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            } */
-            
-            /* Ukryj niepotrzebne elementy */
-            .theme-toggle, 
-            .download-btn,
-            .header::before {
-                display: none !important;
-            }
-            
-            /* Optymalizuj kolory dla druku */
-            .skill-tag {
-                background: #f0f0f0 !important;
-                color: black !important;
-                border: 1px solid #ccc;
-            }
-            
-            .achievement {
-                background: #f8f8f8 !important;
-                border-left: 4px solid #2563eb;
-            }
-        }
-            
+            --accent: #3b82f6;
+            /* Vivid Blue */
+            --accent-glow: rgba(59, 130, 246, 0.15);
 
-        .dark {
-            --background: #0f172a;
-            --surface: #1e293b;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --border: #334155;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+            --border-light: #e2e8f0;
         }
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
         }
 
         body {
             font-family: 'Inter', sans-serif;
+            background: var(--bg-body);
+            margin: 0;
+            padding: 40px 0;
+            color: var(--text-main-primary);
+            font-size: 10pt;
             line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--background);
-            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .page {
+            background: var(--bg-main);
+            width: 210mm;
+            min-height: 297mm;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: grid;
+            grid-template-columns: 32% 68%;
+            /* Wider sidebar for modern look */
         }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        /* --- SIDEBAR (Left) --- */
+        aside {
+            background-color: var(--bg-sidebar);
+            color: var(--text-sidebar-primary);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        /* Avatar / Initials Area (Optional, using Initials for clean look) */
+        .initials-box {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent), #2563eb);
             color: white;
-            padding: 4rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><path d="M500 50L550 25L600 50L650 25L700 50L750 25L800 50L850 25L900 50L950 25L1000 50L1000 100L0 100L0 50Z"/></svg>');
-            background-size: cover;
-        }
-
-        .profile {
-            position: relative;
-            z-index: 2;
-        }
-
-        .profile-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid white;
-            margin: 0 auto 1.5rem;
-            background: var(--surface);
+            font-family: 'Oswald', sans-serif;
+            font-size: 32pt;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: var(--primary);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.5);
         }
 
-        .name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+        /* Contact Section */
+        .sidebar-section h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 10pt;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-sidebar-secondary);
+            margin: 0 0 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
         }
 
-        .title {
-            font-size: 1.25rem;
-            font-weight: 400;
-            opacity: 0.9;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info {
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
+            gap: 12px;
+            color: var(--text-sidebar-primary);
+            text-decoration: none;
+            font-size: 9pt;
+            font-weight: 400;
+            opacity: 0.9;
+            transition: opacity 0.2s;
         }
 
-        /* Sections */
-        .section {
-            padding: 3rem 0;
-            border-bottom: 1px solid var(--border);
+        .contact-item:hover {
+            opacity: 1;
+            color: var(--accent);
         }
 
-        .section:last-child {
-            border-bottom: none;
+        .contact-item svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent);
+            flex-shrink: 0;
         }
 
-        .section-title {
-            font-size: 1.5rem;
+        /* Skills Tags */
+        .skill-group {
+            margin-bottom: 20px;
+        }
+
+        .skill-group-title {
+            font-size: 8.5pt;
             font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 2rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-sidebar-primary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 8pt;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tag.highlight {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* --- MAIN CONTENT (Right) --- */
+        main {
+            padding: 50px 40px;
+            color: var(--text-main-primary);
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 35px;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 25px;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32pt;
+            text-transform: uppercase;
+            color: var(--bg-sidebar);
+            margin: 0;
+            line-height: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .role-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 16pt;
+            color: var(--accent);
+            font-weight: 500;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .summary {
+            margin-top: 15px;
+            color: var(--text-main-secondary);
+            font-size: 10pt;
+            line-height: 1.6;
+        }
+
+        .summary strong {
+            color: var(--bg-sidebar);
+            font-weight: 600;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 14pt;
+            text-transform: uppercase;
+            color: var(--bg-sidebar);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
+            margin: 0 0 20px 0;
+            letter-spacing: 1px;
         }
 
-        .section-title::before {
-            content: '';
-            width: 4px;
-            height: 24px;
-            background: var(--primary);
-            border-radius: 2px;
+        h2 svg {
+            color: var(--accent);
         }
 
-        /* Summary */
-        .summary {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            max-width: 800px;
+        /* Experience Item */
+        .job-item {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+            position: relative;
+            padding-left: 15px;
+            border-left: 2px solid var(--border-light);
         }
 
-        /* Experience */
-        .experience-item {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: var(--radius);
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
+        .job-item:last-child {
+            border-left: 2px solid transparent;
+            /* To allow the line to connect, usually we want a timeline feel. 
+               For now simple border is clean. */
         }
 
-        .experience-header {
-            display: flex;
-            justify-content: between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+        .job-header {
+            margin-bottom: 8px;
         }
 
         .company {
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--bg-sidebar);
+        }
+
+        .role {
+            font-size: 10.5pt;
             font-weight: 600;
-            font-size: 1.2rem;
-            color: var(--text-primary);
+            color: var(--accent);
         }
 
-        .position {
+        .date-loc {
+            font-size: 9pt;
+            color: #64748b;
             font-weight: 500;
-            color: var(--primary);
+            display: block;
+            margin-top: 2px;
         }
 
-        .period {
-            background: var(--primary);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        .location {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .responsibilities {
+        .job-desc {
             list-style: none;
-            margin-top: 1rem;
+            padding: 0;
+            margin: 10px 0 0 0;
         }
 
-        .responsibilities li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
+        .job-desc li {
             position: relative;
+            padding-left: 15px;
+            margin-bottom: 6px;
+            color: var(--text-main-secondary);
+            font-size: 9.5pt;
         }
 
-        .responsibilities li::before {
-            content: '✓';
+        .job-desc li::before {
+            content: "•";
+            color: var(--accent);
             position: absolute;
             left: 0;
-            color: var(--primary);
             font-weight: bold;
         }
 
-        .achievements {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
+        .metric {
+            font-weight: 700;
+            color: var(--bg-sidebar);
+            background: #e2e8f0;
+            padding: 0 4px;
+            border-radius: 3px;
+            font-size: 0.95em;
         }
 
-        .achievement {
-            background: rgba(37, 99, 235, 0.1);
-            padding: 1rem;
-            border-radius: var(--radius);
-            margin-bottom: 0.75rem;
-            border-left: 4px solid var(--primary);
-        }
-
-        /* Skills */
-        .skills-grid {
+        /* Projects */
+        .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 15px;
         }
 
-        .skill-category {
-            background: var(--surface);
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
+        .project-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            padding: 15px;
+            page-break-inside: avoid;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .skill-category h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary);
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-color: var(--accent);
         }
 
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+        .project-title {
+            font-weight: 700;
+            color: var(--bg-sidebar);
+            display: block;
+            margin-bottom: 5px;
         }
 
-        .skill-tag {
-            background: var(--primary);
-            color: white;
-            padding: 0.375rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 500;
+        .project-stack {
+            font-family: monospace;
+            font-size: 8.5pt;
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: block;
         }
 
-        .skill-tag.secondary {
-            background: var(--secondary);
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
+        /* Print Button */
+        .print-btn {
             position: fixed;
-            top: 2rem;
-            right: 2rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 28px;
+            font-weight: 600;
+            font-size: 11pt;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+            cursor: pointer;
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            transition: all 0.3s ease;
+            gap: 10px;
+            transition: all 0.2s;
+            z-index: 999;
         }
 
-        .theme-toggle:hover {
-            transform: scale(1.1);
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5);
         }
 
-        /* Footer */
-        .footer {
-            background: var(--surface);
-            padding: 2rem 0;
-            text-align: center;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--border);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .name {
-                font-size: 2rem;
+        /* --- PRINT MEDIA QUERY --- */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
             }
-            
-            .contact-info {
+
+            .page {
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+                margin: 0;
+            }
+
+            .print-btn {
+                display: none;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            /* Ensure background colors print */
+            aside {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .metric {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+                /* Control margins via CSS padding */
+            }
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 0;
+                display: block;
+            }
+
+            .page {
+                display: flex;
                 flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .experience-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .skills-grid {
+                width: 100%;
                 grid-template-columns: 1fr;
             }
-            
-            .theme-toggle {
-                top: 1rem;
-                right: 1rem;
-            }
-        }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
+            aside {
+                order: 2;
+                /* Move below main content for focus on Content first or keep top? 
+                           Actually for mobile, Name first is better.*/
+                padding: 30px 20px;
             }
-            
-            .header {
-                padding: 3rem 0;
+
+            main {
+                order: 1;
+                /* Name first */
+                padding: 30px 20px;
             }
-            
-            .section {
-                padding: 2rem 0;
+
+            /* Re-order elements inside main if needed? No, Name is top of main. */
+
+            h1 {
+                font-size: 24pt;
             }
-            
-            .experience-item {
-                padding: 1.5rem;
+
+            .role-title {
+                font-size: 13pt;
+            }
+
+            .print-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 10pt;
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- Theme Toggle -->
-    <div class="theme-toggle" onclick="toggleTheme()">
-        <span id="theme-icon">🌙</span>
+
+    <div class="page">
+        <!-- SIDEBAR -->
+        <aside>
+            <div class="initials-box">PB</div>
+
+            <!-- Contact -->
+            <div class="sidebar-section">
+                <h3>Contact</h3>
+                <ul class="contact-list">
+                    <li>
+                        <a href="mailto:bedynski.pawel@gmail.com" class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                <path d="M22 6l-10 7L2 6"></path>
+                            </svg>
+                            bedynski.pawel@gmail.com
+                        </a>
+                    </li>
+                    <li>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Warsaw, PL (Remote)
+                        </div>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/pawe%C5%82-bedy%C5%84ski-99712b35a/" class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                            linkedin.com/in/pawel-bedynski
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/pbedynski-priv" class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                            github.com/pbedynski-priv
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Skills -->
+            <div class="sidebar-section">
+                <h3>Core Stack</h3>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">AI & Agentic</div>
+                    <div class="tag-cloud">
+                        <span class="tag highlight">MCP</span>
+                        <span class="tag highlight">n8n (Expert)</span>
+                        <span class="tag highlight">OpenAI API</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">RAG</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">Cloud Native</div>
+                    <div class="tag-cloud">
+                        <span class="tag highlight">Kubernetes</span>
+                        <span class="tag">GCP</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">Terraform</span>
+                        <span class="tag">Docker</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">Observability & DB</div>
+                    <div class="tag-cloud">
+                        <span class="tag">Prometheus</span>
+                        <span class="tag">Sentry</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Vector DBs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education / Languages -->
+            <div class="sidebar-section">
+                <h3>Expertise</h3>
+                <ul class="contact-list" style="gap: 8px;">
+                    <li>✓ Autonomous Agents</li>
+                    <li>✓ Secure Cloud Arch</li>
+                    <li>✓ DevSecOps Pipelines</li>
+                    <li>✓ B2B Contractor</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Languages</h3>
+                <ul class="contact-list">
+                    <li><strong>English:</strong> C1 / Professional</li>
+                    <li><strong>Polish:</strong> Native</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main>
+            <header>
+                <h1>Paweł Bedyński</h1>
+                <div class="role-title">Senior DevOps & AI Engineer</div>
+                <div class="summary">
+                    <strong>Architecting the safe adoption of Autonomous Agents in Enterprise.</strong><br>
+                    Senior DevOps veteran (10+ years) pivoting to AI Engineering. Expert in designing <strong>Model
+                        Context Protocol (MCP)</strong> servers that safely connect LLMs to infrastructure. I build the
+                    "nervous system" for modern, AI-augmented companies, bridging the gap between operations and
+                    autonomous intelligence.
+                </div>
+            </header>
+
+            <section>
+                <h2>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                    Work Experience
+                </h2>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="role">Owner & Lead AI/DevOps Engineer</div>
+                        <div class="company">SECPROS LLC <span
+                                style="font-weight:400; color:#94a3b8; font-size:0.8em;">(Remote, USA)</span></div>
+                        <span class="date-loc">Mar 2023 – Present</span>
+                    </div>
+                    <ul class="job-desc">
+                        <li><strong>Engineered "Headhunter Agents"</strong> (n8n + OpenAI) that filter 1000+
+                            candidates/day, reducing recruitment cycle time by <span class="metric">95%</span>.</li>
+                        <li><strong>Pioneered custom MCP Servers</strong> enabling LLMs to safely read/write to K8s &
+                            SQL databases, unlocking "Text-to-Infrastructure" workflows for non-technical teams.</li>
+                        <li><strong>Defined DevSecOps standards</strong>, reducing security incidents by <span
+                                class="metric">60%</span> via automated proactive monitoring and vulnerability
+                            management.</li>
+                        <li>Deployed LLM-driven mechanisms (PR Reviewers, Auto-Triage) cutting operational toil by <span
+                                class="metric">70%</span>.</li>
+                    </ul>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="role">Senior DevOps Engineer</div>
+                        <div class="company">LOCON SP. Z O.O. <span
+                                style="font-weight:400; color:#94a3b8; font-size:0.8em;">(Warsaw, PL)</span></div>
+                        <span class="date-loc">May 2022 – Present</span>
+                    </div>
+                    <ul class="job-desc">
+                        <li><strong>Accelerated release velocity by 400%</strong> (2 weeks → 3 days) by refactoring
+                            legacy monolith pipelines into modern, containerized CI/CD workflows.</li>
+                        <li>Built high-performance pipeline infrastructure serving <span class="metric">200+
+                                developers</span>, reducing build times from 2 hours to <span class="metric">15
+                                minutes</span>.</li>
+                        <li>Implemented <strong>Full-Stack Observability</strong> (Loki/Grafana/Mimir), slashing Mean
+                            Time To Recovery (MTTR) by <span class="metric">25%</span> via proactive alerting.</li>
+                        <li>Orchestrated zero-downtime migration to <strong>Google Kubernetes Engine (GKE)</strong>,
+                            reducing infrastructure costs while improving scalability.</li>
+                    </ul>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div class="role">CEO & Senior DevOps Engineer</div>
+                        <div class="company">IT TIMELESS SP. Z O.O. <span
+                                style="font-weight:400; color:#94a3b8; font-size:0.8em;">(Warsaw, PL)</span></div>
+                        <span class="date-loc">Jan 2017 – Dec 2022</span>
+                    </div>
+                    <ul class="job-desc">
+                        <li>Led cloud migration of 50+ applications to <strong>Azure & GCP</strong> using Terraform,
+                            establishing Infrastructure as Code (IaC) best practices.</li>
+                        <li>Optimized cloud spend by <span class="metric">35%</span> through aggressive Spot Instance
+                            strategies and automated resource rightsizing.</li>
+                        <li>Achieved <strong>ISO 27001</strong> and GDPR compliance for critical infrastructure,
+                            ensuring enterprise-grade security standards.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    Key Projects
+                </h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <span class="project-title">Autonomous Recruitment Bot (Internal Tool)</span>
+                        <span class="project-stack">Stack: n8n, OpenAI GPT-4, Pinecone, Telegram API</span>
+                        <div style="font-size: 9.5pt; color: var(--text-main-secondary);">
+                            Fully automated bot that scrapes job boards, vector-matches candidates to B2B requirements,
+                            and initiates outreach. Automated the entire top-of-funnel hiring process.
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <span class="project-title">Multi-Cloud Disaster Recovery Platform</span>
+                        <span class="project-stack">Stack: Terraform, K8s, GitHub Actions, ArgoCD</span>
+                        <div style="font-size: 9.5pt; color: var(--text-main-secondary);">
+                            Developed a "One-Click Deploy" pattern enabling seamless workload portability between AWS
+                            and GCP, ensuring business continuity.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="profile">
-                <div class="profile-image">
-                    👨‍💻
-                </div>
-                <h1 class="name">Paweł Bedyński</h1>
-                <p class="title">Senior DevOps Engineer | Cloud Infrastructure & Automation Specialist</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span>📍</span>
-                        <span>Remote / Warsaw, Poland</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>📧</span>
-                        <a href="mailto:bedynski.pawel@gmail.com" style="color: white; text-decoration: none;">bedynski.pawel@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <span>🔗</span>
-                        <a href="https://www.linkedin.com/in/pawe%C5%82-bedy%C5%84ski-99712b35a/" target="_blank" style="color: white; text-decoration: none;">linkedin.com/in/Pawel-Bedynski</a>
-                    </div>
-                </div>
+    <!-- Print Button (Hidden in Print) -->
+    <button class="print-btn" onclick="window.print()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Save as PDF
+    </button>
 
-                <div class="download-section" style="margin-top: 2rem;">
-                    <button onclick="downloadPDF()" class="download-btn" style="
-                        background: white;
-                        color: var(--primary);
-                        border: none;
-                        padding: 12px 24px;
-                        border-radius: 25px;
-                        font-weight: 600;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                    ">🖨️ Print/Save as PDF</button>
-                </div>
-
-            </div>
-        </div>
-    </header>
-
-    <main class="container">
-        <!-- Summary -->
-        <section class="section">
-            <h2 class="section-title">Professional Summary</h2>
-            <div class="summary">
-                Experienced DevOps Engineer with 8+ years of expertise in designing, automating, and maintaining scalable cloud infrastructure. 
-                Proven track record in implementing Infrastructure as Code (IaC), building robust CI/CD pipelines, and ensuring high availability 
-                of production systems. Strong focus on automation, observability, and security across hybrid cloud environments.
-            </div>
-        </section>
-
-        <!-- Experience -->
-        <section class="section">
-            <h2 class="section-title">Work Experience</h2>
-            
-            <!-- Secpros LLC -->
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <h3 class="company">Secpros LLC</h3>
-                        <p class="position">Owner & Senior DevOps Engineer</p>
-                        <p class="location">United States · Remote</p>
-                    </div>
-                        <span class="period">Mar 2023 - Present · <span id="secpros-time">[Auto-calculated]</span></span>
-                    </div>
-                
-                <ul class="responsibilities">
-                    <li>Design and manage cloud infrastructure on Google Cloud Platform (GCP)</li>
-                    <li>Implement Infrastructure as Code (IaC) using Terraform for consistent, automated provisioning</li>
-                    <li>Use Ansible to orchestrate system configuration and streamline operational workflows</li>
-                    <li>Build robust CI/CD pipelines with GitHub Actions and ArgoCD</li>
-                    <li>Develop and maintain monitoring stacks using Prometheus, Grafana, Loki, and Mimir</li>
-                    <li>Administer PostgreSQL databases and oversee Fortinet network environments</li>
-                    <li>Manage domain portfolios, SSL certificates, and DNS infrastructure</li>
-                    <li>Architect and operate on-prem virtualization environments (oVirt, Proxmox, RHEV) for client systems</li>
-                </ul>
-                
-                <div class="achievements">
-                    <div class="achievement">
-                        <strong>✓ Delivered fully automated production environments for <strong>15+ clients</strong>, reducing manual effort by <strong>70%</strong></strong>
-                    </div>
-                    <div class="achievement">
-                        <strong>✓ Designed hybrid infrastructure serving <strong>1M+ daily users</strong> with <strong>99.99%</strong> uptime</strong>
-                    </div>
-                    <div class="achievement">
-                        <strong>✓ Reduced security incidents by <strong>60%</strong> through automated monitoring</strong>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Locon Sp. z o.o. -->
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <h3 class="company">Locon Sp. z o.o.</h3>
-                        <p class="position">Senior DevOps Engineer</p>
-                        <p class="location">Warsaw, Mazowieckie, Poland · Hybrid</p>
-                    </div>
-                        <span class="period">May 2022 - Present · <span id="locon-time">[Auto-calculated]</span></span>
-                    </div>
-                
-                <ul class="responsibilities">
-                    <li>Manage cloud infrastructure on Google Cloud Platform (GCP), ensuring high availability and performance</li>
-                    <li>Implement and maintain Infrastructure as Code (IaC) using Terraform, streamlining infrastructure provisioning</li>
-                    <li>Automate system configurations and deployments using Ansible, improving consistency and reducing human error</li>
-                    <li>Monitor and analyze infrastructure performance with Prometheus, Grafana, and Zabbix</li>
-                    <li>Administer and tune PostgreSQL databases and Fortinet network security devices</li>
-                    <li>Manage hybrid infrastructure, including on-prem virtualization platforms (oVirt, RHEV)</li>
-                    <li>Develop internal tools and scripts to automate routine tasks and operational workflows</li>
-                    <li>Conduct technical research and evaluate new DevOps tools for performance and reliability</li>
-                </ul>
-                
-                <div class="achievements">
-                    <div class="achievement">
-                        <strong>✓ Automated deployment pipelines reducing release cycles by <strong>40%</strong> (from 2 weeks to 3 days)</strong>
-                    </div>
-                    <div class="achievement">
-                        <strong>✓ Integrated observability reducing incident resolution time by <strong>25%</strong> (from 4h to 3h average)</strong>
-                    </div>
-                    <div class="achievement">
-                        <strong>✓ Streamlined cloud migration improving operational efficiency by <strong>50%</strong></strong>
-                    </div>
-                </div>
-
-            <!-- IT Timeless Sp. z o. o. -->
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <h3 class="company">IT Timeless Sp. z o. o.</h3>
-                        <p class="position">CEO & Senior DevOps Engineer</p>
-                        <p class="location">Warsaw, Mazowieckie, Poland · On-site</p>
-                    </div>
-                        <span class="period">Jan 2017 - Dec 2022 · <span id="timeless-time">[Auto-calculated]</span></span>
-                    </div>
-                
-                <ul class="responsibilities">
-                    <li>Managed application life cycles and infrastructure on Microsoft Azure</li>
-                    <li>Implemented Infrastructure as Code (Terraform) and configuration management with Chef</li>
-                    <li>Maintained and secured Windows Active Directory domains and Hyper-V clusters</li>
-                    <li>Deployed and managed operating systems, third-party apps, and updates using SCCM/WSUS</li>
-                    <li>Built automation scripts to optimize infrastructure and operational tasks</li>
-                    <li>Led integration of new DevOps solutions and ensured infrastructure compliance</li>
-                    <li>Coordinated technical direction, client delivery, and team operations</li>
-                </ul>
-                
-                <div class="achievements">
-                    <div class="achievement">
-                        <strong>✓ Delivered full-stack infrastructure automation with Terraform and Chef</strong>
-                    </div>
-                    <div class="achievement">
-                        <strong>✓ Improved service uptime and patch management workflows across on-prem systems</strong>
-                    </div>
-                    <div class="achievement">
-                        <strong>✓ Ensured GDPR and ISO 27001 compliance through secure architecture and documentation standards</strong>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Key Projects -->
-        <section class="section">
-            <h2 class="section-title">Key Projects</h2>
-            
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <h3 class="company">Multi-Cloud Migration Platform</h3>
-                        <p class="position">Lead DevOps Architect</p>
-                    </div>
-                    <!-- <span class="period">2023</span> -->
-                </div>
-                <p><strong>Technologies:</strong> Terraform, Kubernetes, GitHub Actions, Prometheus, Grafana</p>
-                <ul class="responsibilities">
-                    <li>Migrated 50+ legacy applications to cloud-native architecture</li>
-                    <li>Reduced infrastructure costs by <strong>35%</strong> through optimized resource allocation</li>
-                    <li>Improved deployment frequency from weekly to <strong>multiple times per day</strong></li>
-                    <li>Achieved <strong>99.95%</strong> system uptime through automated monitoring</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div>
-                        <h3 class="company">Enterprise CI/CD Platform</h3>
-                        <p class="position">Senior DevOps Engineer</p>
-                    </div>
-                    <!-- <span class="period">2022</span> -->
-                </div>
-                <p><strong>Technologies:</strong> GitHub Actions, ArgoCD, Docker, Kubernetes, Helm</p>
-                <ul class="responsibilities">
-                    <li>Built end-to-end CI/CD pipeline serving <strong>200+ developers</strong></li>
-                    <li>Reduced deployment time from <strong>2 hours to 15 minutes</strong></li>
-                    <li>Automated security scanning catching <strong>95%</strong> of vulnerabilities pre-production</li>
-                    <li>Implemented blue-green deployments reducing downtime by <strong>80%</strong></li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Skills -->
-        <section class="section">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Cloud Platforms</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Google Cloud Platform (GCP)</span>
-                        <span class="skill-tag">Microsoft Azure</span>
-                        <span class="skill-tag">AWS</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Infrastructure as Code</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Terraform</span>
-                        <span class="skill-tag">Ansible</span>
-                        <span class="skill-tag">Chef</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>CI/CD & Automation</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">GitHub Actions</span>
-                        <span class="skill-tag">ArgoCD</span>
-                        <span class="skill-tag">n8n</span>
-                        <span class="skill-tag">Continuous Integration</span>
-                        <span class="skill-tag">Continuous Delivery</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Containerization & Orchestration</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Kubernetes</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Helm Charts</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Monitoring & Observability</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Prometheus</span>
-                        <span class="skill-tag">Grafana</span>
-                        <span class="skill-tag">Loki</span>
-                        <span class="skill-tag">Mimir</span>
-                        <span class="skill-tag">Zabbix</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Databases & Networking</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">Fortinet</span>
-                        <span class="skill-tag">DNS</span>
-                        <span class="skill-tag">SSL Certificates</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Virtualization</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">oVirt</span>
-                        <span class="skill-tag">Proxmox</span>
-                        <span class="skill-tag">RHEV</span>
-                        <span class="skill-tag">Hyper-V</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Operating Systems</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Linux System Administration</span>
-                        <span class="skill-tag">Windows Server</span>
-                        <span class="skill-tag">Active Directory</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Scripting & Programming</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Bash</span>
-                        <span class="skill-tag">PowerShell</span>
-                        <span class="skill-tag">YAML</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Security & DevSecOps</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">DevSecOps</span>
-                        <span class="skill-tag">Security Scanning</span>
-                        <span class="skill-tag">Vulnerability Management</span>
-                        <span class="skill-tag">Security Best Practices</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Database Administration</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">PostgreSQL Administration</span>
-                        <span class="skill-tag">Performance Tuning</span>
-                        <span class="skill-tag">Database Backup & Recovery</span>
-                        <span class="skill-tag">High Availability</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>AI/ML Infrastructure</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MLOps</span>
-                        <span class="skill-tag">AI Infrastructure</span>
-                        <span class="skill-tag">Model Deployment</span>
-                        <span class="skill-tag">GPU Management</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Security & Compliance</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">GDPR</span>
-                        <span class="skill-tag">ISO 27001</span>
-                        <span class="skill-tag">Security Best Practices</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-                <!-- Certifications -->
-        <!-- <section class="section">
-            <h2 class="section-title">Certifications</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Cloud Certifications</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Google Cloud Professional DevOps Engineer</span>
-                        <span class="skill-tag">AWS Certified DevOps Engineer - Professional</span>
-                        <span class="skill-tag">CKA (Certified Kubernetes Administrator)</span>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-
-        <!-- Soft Skills -->
-        <section class="section">
-            <h2 class="section-title">Soft Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Leadership & Communication</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag secondary">Team Leadership</span>
-                        <span class="skill-tag secondary">Client Consulting</span>
-                        <span class="skill-tag secondary">Technical Mentoring</span>
-                        <span class="skill-tag secondary">Stakeholder Management</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Problem Solving</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag secondary">Incident Management</span>
-                        <span class="skill-tag secondary">Root Cause Analysis</span>
-                        <span class="skill-tag secondary">Strategic Planning</span>
-                        <span class="skill-tag secondary">Risk Assessment</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Languages -->
-        <section class="section">
-            <h2 class="section-title">Languages</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="skill-tags">
-                        <span class="skill-tag secondary">Polish: Native</span>
-                        <span class="skill-tag secondary">English: Fluent</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Pawel Bedynski. All rights reserved.</p>
-            <p>Built with ❤️ for GitHub Pages</p>
-        </div>
-    </footer>
-
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle('dark');
-            const themeIcon = document.getElementById('theme-icon');
-            themeIcon.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-        }
-    </script>
-
-<script>
-    function calculateExperience(startDate, endDate = null) {
-        const start = new Date(startDate);
-        const end = endDate ? new Date(endDate) : new Date();
-        
-        let years = end.getFullYear() - start.getFullYear();
-        let months = end.getMonth() - start.getMonth();
-        
-        if (months < 0) {
-            years--;
-            months += 12;
-        }
-        
-        return { years, months };
-    }
-    
-    function formatExperience(years, months) {
-        if (years === 0) {
-            return `${months} mos`;
-        } else if (months === 0) {
-            return `${years} yrs`;
-        } else {
-            return `${years} yrs ${months} mos`;
-        }
-    }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        // Secpros LLC
-        const secprosExp = calculateExperience('2023-03-01');
-        document.getElementById('secpros-time').textContent = formatExperience(secprosExp.years, secprosExp.months);
-        
-        // Locon Sp. z o.o.
-        const loconExp = calculateExperience('2022-05-01');
-        document.getElementById('locon-time').textContent = formatExperience(loconExp.years, loconExp.months);
-        
-        // IT Timeless Sp. z o.o.
-        const timelessExp = calculateExperience('2017-01-01', '2022-12-31');
-        document.getElementById('timeless-time').textContent = formatExperience(timelessExp.years, timelessExp.months);
-    });
-</script>
-
-<script>
-    function downloadPDF() {
-        window.print();
-    }
-</script>
 </body>
+
 </html>
